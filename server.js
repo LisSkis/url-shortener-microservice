@@ -1,3 +1,7 @@
+// server.js
+// where your node app starts
+
+// init project
 const Express = require('express');
 
 const { mongoose } = require('./db/mongoose');
@@ -15,7 +19,7 @@ app.get('/new/http://:url', (req, res) => {
   url.save().then((doc) => {
     res.send({
       original_url,
-      short_url: `${req.headers.host}/${doc.urlIndex}`,
+      short_url: `https://${req.headers.host}/${doc.urlIndex}`,
     });
   }, e => res.status(400).send(e));
 });
@@ -29,7 +33,7 @@ app.get('/new/https://:url', (req, res) => {
   url.save().then((doc) => {
     res.send({
       original_url,
-      short_url: `${req.headers.host}/${doc.urlIndex}`,
+      short_url: `https://${req.headers.host}/${doc.urlIndex}`,
     });
   }, e => res.status(400).send(e));
 });
